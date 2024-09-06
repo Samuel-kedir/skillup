@@ -1980,3 +1980,13 @@ body {
         width: 95%;
     }
 }
+
+.page-header {
+    /* background: linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.5)),
+        url(../images/about-1.jpg) center center no-repeat;
+    background-size: cover; */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--light);
+}

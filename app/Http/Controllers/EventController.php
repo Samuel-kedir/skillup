@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseSyllabus;
 use App\Models\Event;
 use App\Models\Testimonial;
 use App\Models\TestimonialSection;
@@ -14,6 +15,10 @@ class EventController extends Controller
         $events = Event::all();
         $testimonials = Testimonial::all();
         $testimonialSection = TestimonialSection::first();
-        return view('welcome', compact('events','testimonials','testimonialSection'));
+        $courses = CourseSyllabus::with('category')->get();
+
+
+
+        return view('welcome', compact('events','testimonials','testimonialSection','courses'));
     }
 }

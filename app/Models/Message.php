@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TestimonialSection extends Model
+class Message extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'title',
-        'subtitle',
-        'description'
-    ];
+    protected $fillable = ['name', 'email', 'message'];
 }

@@ -7,16 +7,15 @@ use App\Filament\Resources\TestimonialResource\RelationManagers;
 use App\Models\Testimonial;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use App\View\Components\TinyMCEEditor; // Import the TinyMCE component
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TestimonialResource extends Resource
 {
@@ -30,7 +29,10 @@ class TestimonialResource extends Resource
             ->schema([
                 TextInput::make('author_name')->required(),
                 TextInput::make('author_category')->required(),
-                Textarea::make('testimonial')->required(),
+                Textarea::make('testimonial')
+                ->label('Testimonial')
+                ->hint('Use the rich text editor below.')
+                ->extraAttributes(['class' => 'tinymce-editor']),
                 FileUpload::make('author_image')->image()->nullable(),
             ]);
     }
@@ -40,8 +42,8 @@ class TestimonialResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('author_name'),
-                TextColumn::make('author category'),
-                ImageColumn::make('author_image')->disk('public')
+                TextColumn::make('author_category'),
+                ImageColumn::make('author_image')->disk('public'),
             ])
             ->filters([
                 //

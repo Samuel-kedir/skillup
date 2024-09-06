@@ -2,12 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TestimonialSectionResource\Pages;
-use App\Filament\Resources\TestimonialSectionResource\RelationManagers;
-use App\Models\TestimonialSection;
+use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,9 +16,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class TestimonialSectionResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = TestimonialSection::class;
+    protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -27,9 +26,18 @@ class TestimonialSectionResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required(),
-                TextInput::make('subtitle')->required(),
-                RichEditor::make('description')->required()
+                TextInput::make('name')
+                ->required()
+                ->label('Category Name'),
+            RichEditor::make('description')
+                ->label('Category Description')
+                ->nullable(),
+            TextInput::make('discount')
+                ->label('Bundle Discount')
+                ->numeric()
+                ->default(0)
+                ->prefix('$')
+                ->maxValue(10000),
             ]);
     }
 
@@ -37,7 +45,12 @@ class TestimonialSectionResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')
+                TextColumn::make('name')
+                ->sortable()
+                ->searchable(),
+                TextColumn::make('discount')
+                ->label('Price')
+                ->searchable()
             ])
             ->filters([
                 //
@@ -62,9 +75,9 @@ class TestimonialSectionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTestimonialSections::route('/'),
-            'create' => Pages\CreateTestimonialSection::route('/create'),
-            'edit' => Pages\EditTestimonialSection::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }

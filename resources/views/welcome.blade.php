@@ -9,6 +9,7 @@
 
         <title>Scholar - Online School HTML5 Template</title>
 
+
         {{-- @vite('resources/css/app.css') --}}
 
         <!-- Bootstrap core CSS -->
@@ -23,7 +24,6 @@
         <!-- Swiper CSS -->
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     </head>
-
 
   <body>
     <!-- ***** Preloader Start ***** -->
@@ -358,165 +358,43 @@
 
     {{-- course starts --}}
 
-    <section class="section courses" id="courses">
-      <div class="container">
+   <section class="section courses" id="courses">
+    <div class="container">
         <div class="row">
-          <div class="text-center col-lg-12">
-            <div class="section-heading">
-              <h6>Instructor Led</h6>
-              <h2>Latest Courses</h2>
+            <div class="text-center col-lg-12">
+                <div class="section-heading">
+                    <h6>Instructor Led</h6>
+                    <h2>Latest Courses</h2>
+                </div>
             </div>
-          </div>
         </div>
         <ul class="event_filter">
-          <li>
-            <a  href="#!" data-filter="*">Show All</a>
-          </li>
-          <li>
-            <a class="is_active" href="#!" data-filter=".featured">Featured</a>
-          </li>
-          <li>
-            <a  href="#!" data-filter=".dataAnalytics">Data Analytics</a>
-          </li>
-          <li>
-            <a href="#!" data-filter=".powerPlatform">Power Platform</a>
-          </li>
-          {{-- <li>
-            <a href="#!" data-filter=".development">Development</a>
-          </li> --}}
+            <li><a href="#!" data-filter="*">Show All</a></li>
+            @foreach($courses->pluck('category')->unique() as $category)
+                <li><a href="#!" data-filter=".{{ strtolower($category->name) }}">{{ $category->name }}</a></li>
+            @endforeach
         </ul>
         <div class="row event_box" style="overflow:visible;">
-             <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer featured development dataAnalytics">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-04.jpg" alt="SQL Course" /></a>
-                        <span class="category">Data Analytics</span>
-                        <span class="price">
-                            <h6>4<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Intermediate</span>
-                        <h4>SQL</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer featured development dataAnalytics">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-05.jpg" alt="Python Course" /></a>
-                        <span class="category">Data Analytics</span>
-                        <span class="price">
-                            <h6>6<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Intermediate to Advanced</span>
-                        <h4>Python</h4>
+            @foreach($courses as $course)
+                <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer {{ strtolower($course->category->name) }}">
+                    <div class="events_item">
+                        <div class="thumb">
+                            <a href="#"><img src="{{ asset('path/to/course_images/' . $course->course_icon) }}" alt="{{ $course->title }} Course" /></a>
+                            <span class="category">{{ $course->category->name }}</span>
+                            <span class="price">
+                                <h6>{{ $course->duration }}<em><sup> Weeks</sup></em></h6>
+                            </span>
+                        </div>
+                        <div class="down-content">
+                            <span class="author">Level: {{ $course->level }}</span>
+                            <h4>{{ $course->title }}</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer dataAnalytics">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-01.jpg" alt="Excel Course" /></a>
-                        <span class="category">Data Analytics</span>
-                        <span class="price">
-                            <h6>4<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Beginner</span>
-                        <h4>Excel</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer dataAnalytics">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-02.jpg" alt="Statistics Course" /></a>
-                        <span class="category">Data Analytics</span>
-                        <span class="price">
-                            <h6>3<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Beginner</span>
-                        <h4>Statistics</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer featured dataAnalytics">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-03.jpg" alt="Power BI Course" /></a>
-                        <span class="category">Data Analytics</span>
-                        <span class="price">
-                            <h6>5<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Beginner to Intermediate</span>
-                        <h4>Power BI</h4>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer powerPlatform">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-06.jpg" alt="SharePoint Course" /></a>
-                        <span class="category">Power Platform</span>
-                        <span class="price">
-                            <h6>4<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Beginner</span>
-                        <h4>SharePoint</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer powerPlatform">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-06.jpg" alt="Power Automate Course" /></a>
-                        <span class="category">Power Platform</span>
-                        <span class="price">
-                            <h6>5<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Intermediate</span>
-                        <h4>Power Automate</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer powerPlatform">
-                <div class="events_item">
-                    <div class="thumb">
-                        <a href="#"><img src="images/course-05.jpg" alt="Power Apps Course" /></a>
-                        <span class="category">Power Platform</span>
-                        <span class="price">
-                            <h6>6<em> <sup>Weeks</sup> </em></h6>
-                        </span>
-                    </div>
-                    <div class="down-content">
-                        <span class="author">Level: Intermediate</span>
-                        <h4>Power Apps</h4>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
     {{-- course ends --}}
 
@@ -686,7 +564,7 @@
               <div class="section-heading">
                 <h6>{{ $testimonialSection->title }}</h6>
                 <h2>{{ $testimonialSection->subtitle }}</h2>
-                <p>{{ $testimonialSection->description }}</p>
+                <p>{!! $testimonialSection->description !!}   </p>
               </div>
             </div>
           </div>
@@ -768,6 +646,7 @@
           <div class="col-lg-6">
             <div class="contact-us-content">
               <form id="contact-form" action="{{ route('submit.message') }}" method="POST">
+                @csrf
                 <div class="row">
                   <div class="col-lg-12">
                     <fieldset>
@@ -821,24 +700,17 @@
       </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <div class="col-lg-12">
-          <p>
-            Copyright © 2036 Scholar Organization. All rights reserved.
-            &nbsp;&nbsp;&nbsp; dataAnalytics:
-            <a href="https://templatemo.com" rel="nofollow" target="_blank"
-              >TemplateMo</a
-            >
-            Distribution:
-            <a href="https://themewagon.com" rel="nofollow" target="_blank"
-              >ThemeWagon</a
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
-
+ <footer>
+  <div class="container">
+    <div class="col-lg-12">
+      <p>
+        Copyright © 2024 SkillUp ET Tech Bootcamp. All rights reserved.
+        &nbsp;&nbsp;&nbsp; Website:
+        <a href="https://www.skillupet.com" target="_blank">www.skillupet.com</a>
+      </p>
+    </div>
+  </div>
+</footer>
    <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
