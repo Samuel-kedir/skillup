@@ -22,6 +22,8 @@ class MessageController extends Controller
 
        $newMessage->save();
 
-        return redirect('/')->with('success', 'Your message has been sent!');
+        // return redirect('/')->with('success', 'Your message has been sent!');
+        return redirect()->back()->with('success', 'Your message has been sent!');
+
     }
 }

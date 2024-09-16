@@ -18,7 +18,7 @@ class EventController extends Controller
         $courses = CourseSyllabus::with('category')->get();
 
 
-
+        // dd($courses);
         return view('welcome', compact('events','testimonials','testimonialSection','courses'));
     }
 }
