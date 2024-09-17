@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,7 @@ Route::get('/course', function () {
 // Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('course.show');
 
-Route::get('/', [EventController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');

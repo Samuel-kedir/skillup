@@ -1,3 +1,9 @@
+@php
+
+    use Carbon\Carbon;
+
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +18,6 @@
     <title>Scholar - Online School HTML5 Template</title>
 
 
-    @vite('resources/css/app.css')
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -22,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('css/templatemo-scholar.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/owl.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}" />
+
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
@@ -112,47 +118,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="owl-carousel owl-banner">
-                        <div class="item item-1">
+                        {{-- <button id="clickNow">Click me NOw</button> --}}
+
+
+                        <div class="item item-3" style="background-image: url(../images/banner-item-01.jpg);">
                             <div class="header-text">
-                                <span class="category">Our Courses</span>
-                                <h2>Unlock Your Potential with SkillUpET</h2>
-                                <p>
-                                    SkillUpET offers expert-led online courses designed to empower Ethiopians living
-                                    abroad. Whether you're looking to advance in Data Analytics or Microsoft Power
-                                    Platform, our courses provide the skills and knowledge needed to excel.
-                                </p>
-                                <div class="buttons">
-                                    <div class="main-button">
-                                        <a href="#courses">Explore Courses</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <a href="#"><i class="fa fa-play"></i> Learn More About Us</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item item-2">
-                            <div class="header-text">
-                                <span class="category">Achieve Success</span>
-                                <h2>Gain Practical Skills and Achieve Your Goals</h2>
-                                <p>
-                                    Our courses are designed to prepare you for official Microsoft certifications and
-                                    beyond. With comprehensive instruction and hands-on practice, you'll be ready to
-                                    tackle any challenge.
-                                </p>
-                                <div class="buttons">
-                                    <div class="main-button">
-                                        <a href="#webinars">Join a Free Webinar</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <a href="#"><i class="fa fa-play"></i> Watch Our Tutorials</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item item-3">
-                            <div class="header-text">
-                                <span class="category">Flexible Learning</span>
+                                <button class="category" >Flexible Learning</button>
                                 <h2>Learn at Your Own Pace from Anywhere</h2>
                                 <p>
                                     Our online classes are held three times a week at 8 PM EDT, making it easy to fit
@@ -164,9 +135,65 @@
                                         <a href="#contact">Register & Get Started</a>
                                     </div>
                                     <div class="icon-button">
-                                        <a href="#"><i class="fa fa-play"></i> Discover More</a>
+                                        <button class="show-video">
+                                            <i class="fa fa-play"></i> Discover More
+                                        </button>
+
+
+                                        <div class="video-container" style="display: none;">
+                                            <button id="" class="btn close-btn close-video"
+                                                style="position: absolute; top: 10px; right: 20px;">X</button>
+
+
+                                            <div class="embed-responsive">
+                                                <iframe id="video-frame"
+                                                    {{-- src="https://www.youtube.com/embed/NlM5SuiHR0A?rel=0" --}}
+                                                    frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item item-3" style="background-image: url(../images/banner-item-01.jpg);">
+                            <div class="header-text">
+                                <button class="category" >Flexible Learning</button>
+                                <h2>Learn at Your Own Pace from Anywhere</h2>
+                                <p>
+                                    Our online classes are held three times a week at 8 PM EDT, making it easy to fit
+                                    learning into your schedule. Experience the convenience of online education with
+                                    personalized support from expert instructors.
+                                </p>
+                                <div class="buttons">
+                                    <div class="main-button">
+                                        <a href="#contact">Register & Get Started</a>
+                                    </div>
+                                    <div class="icon-button">
+                                        <button class="show-video">
+                                            <i class="fa fa-play"></i> Discover More
+                                        </button>
+
+
+                                        <div class="video-container" style="display: none;">
+                                            <button id="" class="btn close-btn close-video"
+                                                style="position: absolute; top: 10px; right: 20px;">X</button>
+
+
+                                            <div class="embed-responsive">
+                                                <iframe id="video-frame"
+                                                    {{-- src="https://www.youtube.com/embed/NlM5SuiHR0A?rel=0" --}}
+                                                    frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -340,13 +367,6 @@
 
     {{-- course starts --}}
 
-    <div class="section" style="display: flex; justify-content: center; align-items:center; ">
-        <h1>Hey there</h1>
-
-        @foreach ($courses as $course)
-            <h1>Count {{ $course->category->name }}</h1>
-        @endforeach
-    </div>
 
     <section class="section courses" id="courses">
         <div class="container">
@@ -360,21 +380,35 @@
             </div>
             <ul class="event_filter">
                 <li><a href="#!" data-filter="*">Show All</a></li>
+                <li>
+                    <a href="#!" class="is_active" data-filter=".featured">Featured</a>
+                </li>
                 @foreach ($courses->pluck('category')->unique() as $category)
-                    <li><a href="#!" data-filter=".{{ strtolower($category->name) }}">{{ $category->name }}</a>
+                    <li><a href="#!"
+                            data-filter=".{{ str_replace(' ', '', strtolower($category->name)) }}">{{ $category->name }}
+                        </a>
                     </li>
                 @endforeach
             </ul>
+
+
             <div class="row event_box" style="overflow:visible;">
                 @foreach ($courses as $course)
                     <div
-                        class="col-lg-4 col-md-6 align-self-center mb-30 event_outer featured {{ strtolower($course->category->name) }}">
+                        class="col-lg-4 col-md-6 align-self-center mb-30 event_outer  {{ $course->featured ? 'featured' : '' }} {{ str_replace(' ', '', strtolower($course->category->name)) }}">
                         <div class="events_item">
-                            <div class="thumb">
-                                <a href="#"><img
-                                        src="https://images.unsplash.com/photo-1719937050640-71cfd3d851be"
-                                        alt="{{ $course->title }} Course" /></a>
-                                <span class="category">{{ $course->category->name }}</span>
+                            <div class="thumb ">
+                                <div class="image-container">
+                                    <a href="courses/{{ $course->slug }}" class="block">
+                                        <img src="{{ asset('storage/' . $course->course_icon) }}"
+                                            style="height: 250px; object-fit: cover; max-height: 50vh"
+                                            alt="{{ $course->slug }} Course" />
+                                        <div class="overlay"></div>
+                                    </a>
+                                </div>
+
+                                <span class="category">{{ $course->category->name }}
+                                </span>
                                 <span class="price">
                                     {{-- <h6>{{ $course->duration }}<em><sup> Weeks</sup></em></h6> --}}
 
@@ -390,9 +424,16 @@
 
                                     <h6>{{ $number }}<em><sup> {{ $text }}</sup></em></h6>
                                 </span>
+
                             </div>
                             <div class="down-content">
-                                <span class="author">Level: {{ $course->level }}</span>
+                                @php
+
+                                    $dateString = $course->start_date; // Assuming this is a Carbon/Date object or a date string
+                                    $formattedDate = Carbon::parse($dateString)->format('F j'); // Format to "Month Name Day"
+                                @endphp
+
+                                <span class="author">Date: {{ $formattedDate }}</span>
                                 <h4>{{ $course->title }}</h4>
                             </div>
                         </div>
@@ -693,8 +734,9 @@
     <script src="{{ asset('js/isotope.min.js') }}"></script>
     <script src="{{ asset('js/owl-carousel.js') }}"></script>
     <script src="{{ asset('js/counter.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/isotopeCustom.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+
 
 
 

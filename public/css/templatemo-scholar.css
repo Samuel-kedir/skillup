@@ -25,7 +25,7 @@ Table of contents
 font & reset css
 ---------------------------------------------
 */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900');
 /*
 ---------------------------------------------
 reset
@@ -104,7 +104,7 @@ figcaption {
 }
 
 .clearfix:after {
-    content: ".";
+    content: '.';
     display: block;
     clear: both;
     visibility: hidden;
@@ -147,7 +147,7 @@ hgroup {
 
 html,
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -191,7 +191,7 @@ Global Styles
 */
 html,
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 ::selection {
@@ -559,7 +559,7 @@ Header Style
 
 .header-area .main-nav .menu-trigger span:before,
 .header-area .main-nav .menu-trigger span:after {
-    content: "";
+    content: '';
 }
 
 .header-area .main-nav .menu-trigger span {
@@ -747,7 +747,7 @@ Banner Style
     padding: 170px 0px 120px 0px;
 }
 
-.main-banner .item-1 {
+/* .main-banner .item-1 {
     background-image: url(../images/banner-item-01.jpg);
 }
 
@@ -757,7 +757,7 @@ Banner Style
 
 .main-banner .item-3 {
     background-image: url(../images/banner-item-03.jpg);
-}
+} */
 
 .main-banner .item {
     background-repeat: no-repeat;
@@ -942,7 +942,7 @@ About Style
     width: 84%;
     height: 100%;
     background-color: #f1f0fe;
-    content: "";
+    content: '';
     border-top-left-radius: 500px;
     border-bottom-left-radius: 500px;
 }
@@ -975,7 +975,7 @@ About Style
 
 h2.accordion-header button {
     padding: 15px 25px;
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-size: 16px;
     font-weight: 600;
 }
@@ -984,7 +984,7 @@ h2.accordion-header button {
     font-size: 18px;
     font-weight: 500;
     background-image: none;
-    content: "+";
+    content: '+';
     width: 30px;
     height: 30px;
     display: inline-block;
@@ -998,7 +998,7 @@ h2.accordion-header button {
 .accordion-button:not(.collapsed)::after {
     background-image: none;
     line-height: 32px;
-    content: "-";
+    content: '-';
 }
 
 .accordion-body {
@@ -1171,7 +1171,7 @@ Facts Style
     width: 95%;
     height: 100%;
     background-color: #7a6ad8;
-    content: "";
+    content: '';
     border-top-right-radius: 500px;
     border-bottom-right-radius: 500px;
 }
@@ -1184,7 +1184,7 @@ Facts Style
     top: 0;
     width: 318px;
     height: 119px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -1200,7 +1200,7 @@ Facts Style
 }
 
 .fun-facts h2::after {
-    content: "+";
+    content: '+';
     margin-left: 5px;
 }
 
@@ -1303,7 +1303,7 @@ Testimonials Style
     width: 65%;
     height: 100%;
     background-color: #f1f0fe;
-    content: "";
+    content: '';
     border-top-left-radius: 500px;
     border-bottom-left-radius: 500px;
 }
@@ -1499,7 +1499,7 @@ Contact Style
     width: 65%;
     height: 100%;
     background-color: #f1f0fe;
-    content: "";
+    content: '';
     border-top-right-radius: 500px;
     border-bottom-right-radius: 500px;
 }
@@ -1601,7 +1601,7 @@ Contact Style
     top: 0;
     width: 318px;
     height: 119px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -1612,7 +1612,7 @@ Contact Style
     bottom: 0;
     width: 183px;
     height: 149px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -1745,7 +1745,7 @@ footer::before {
     bottom: 0;
     width: 318px;
     height: 119px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -1989,4 +1989,113 @@ body {
 
 .breadcrumb-item + .breadcrumb-item::before {
     color: var(--light);
+}
+
+.video-container {
+    position: relative;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.embed-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* .video-container {
+    position: relative;
+    max-width: 100%;
+    margin-top: 20px;
+    display: none;
+}
+
+.embed-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+} */
+
+/* Ensure the video container covers the whole screen */
+#show-video:hover {
+    cursor: pointer;
+}
+/* Video container now has a close button and centers the iframe */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: none; /* Initially hidden */
+    justify-content: center; /* Centers iframe horizontally */
+    align-items: center; /* Centers iframe vertically */
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+/* Controls the size of the iframe */
+.embed-responsive {
+    width: 80%; /* 80% of the screen width */
+    height: 60%; /* 60% of the screen height */
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling for the close button */
+.close-btn {
+    font-size: 20px;
+    padding: 1px 10px;
+    cursor: pointer;
+    z-index: 100;
+    background: #7a6ad8;
+    color: white;
+}
+
+.image-container {
+    position: relative;
+    display: block; /* Keeps the image and overlay in a block */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 0; /* Overlay is above the image */
+}
+.block {
+    position: relative; /* Helps keep text in the right stacking order */
+    z-index: 0; /* Adjust as needed; should be below the overlay */
+}
+
+.image-container img {
+    display: block; /* Ensures no extra space below the image */
+    width: 100%; /* Make sure the image takes the full width */
+    height: auto; /* Maintain aspect ratio */
 }

@@ -24,6 +24,7 @@ class CourseSyllabus extends Model
         'about_course_title',
         'about_course_detail',
         'category_id',
+        'featured'
     ];
     protected $casts = [
         'start_date' => 'datetime',
