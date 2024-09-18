@@ -11,11 +11,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
-    <title>Scholar - Online School HTML5 Template</title>
+    <title>SkillUp ET Bootcamp | Tech Courses for Ethiopians in the USA, Europe, and Australia</title>
+
+    <meta name="description"
+        content="SkillUp ET Bootcamp offers live, instructor-led tech courses exclusively for Ethiopians living in the USA, Europe, and Australia. Specializing in Data Analytics, Microsoft Power Platform, and Programming, we focus on absolute beginners and career changers. Our interactive bootcamp, taught in Amharic, ensures job readiness and prepares students for Microsoft PL Exams. Register today to start your tech journey with instructors who simplify every concept for easy understanding." />
+
+    <meta name="keywords"
+        content="Ethiopians in USA tech bootcamp, Ethiopians in Europe tech courses, Habeshans learning tech, Data Analytics for Ethiopians, Power BI courses for beginners, Microsoft Power Platform training, Tech for Ethiopians abroad, Amharic tech courses, Python for beginners Ethiopia, Excel, SQL, Power BI training, DMV Area tech bootcamp for Ethiopians, Microsoft PL Exam prep, Career change to tech Ethiopia" />
+
+    <meta name="author" content="SkillUp ET Bootcamp" />
+    <meta name="robots" content="index, follow" />
+
 
 
 
@@ -57,31 +72,17 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="/" class="logo">
-                            <h1 style="">Skill Up <sup>ET</sup> </h1>
+                            <h1 style="display: inline-flex; flex-wrap:nowrap;"><span>skillup</span> <sub
+                                    style="vertical-align: super">et</sub></h1>
                             {{-- <span>Skill Up ET Online BootCamp</span> --}}
                         </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Search Start ***** -->
-                        {{-- <div class="search-input">
-                  <form id="search" action="#">
-                    <input
-                      type="text"
-                      placeholder="Search for courses or webinars"
-                      id="searchText"
-                      name="searchKeyword"
-                      onkeypress="handle"
-                    />
-                    <i class="fa fa-search"></i>
-                  </form>
-                </div> --}}
-                        <!-- ***** Search End ***** -->
-                        <!-- ***** Menu Start ***** -->
+
                         <ul class="nav">
                             <li class="scroll-to-section">
                                 <a href="#top" class="active">Home</a>
                             </li>
                             <li class="scroll-to-section">
-                                <a href="#services">Services</a>
+                                <a href="#about">About</a>
                             </li>
                             <li class="scroll-to-section">
                                 <a href="#courses">Courses</a>
@@ -89,9 +90,7 @@
                             <li class="scroll-to-section">
                                 <a href="#webinars">Webinars</a>
                             </li>
-                            <li class="scroll-to-section">
-                                <a href="#blog">Blog</a>
-                            </li>
+
                             <li class="scroll-to-section">
                                 <a href="#contact">Contact</a>
                             </li>
@@ -118,84 +117,47 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="owl-carousel owl-banner">
-                        {{-- <button id="clickNow">Click me NOw</button> --}}
+                        @foreach ($banners as $banner)
+                            <div class="item item-3"
+                                style="background-image: url('{{ asset('storage/' . $banner->background_image) }}');">
+                                <div class="header-text">
+                                    <span class="category">{{ $banner->category }}</span>
+                                    <h2>{{ $banner->title }}</h2>
+                                    <p>
+                                        {{ $banner->description }}
+                                    </p>
+                                    <div class="buttons">
+                                        <div class="main-button">
+                                            <a
+                                                href="{{ $banner->register_button_link }}">{{ $banner->register_button_text }}</a>
 
+                                        </div>
+                                        <div class="icon-button">
+                                            <span class="show-video">
+                                                <i class="fa fa-play"></i> {{ $banner->video_button_text }}
+                                            </span>
+                                            <div class="video-container" style="display: none;">
+                                                <button class="btn close-btn close-video" style="position: absolute; top: 10px; right: 20px;">X</button>
 
-                        <div class="item item-3" style="background-image: url(../images/banner-item-01.jpg);">
-                            <div class="header-text">
-                                <button class="category" >Flexible Learning</button>
-                                <h2>Learn at Your Own Pace from Anywhere</h2>
-                                <p>
-                                    Our online classes are held three times a week at 8 PM EDT, making it easy to fit
-                                    learning into your schedule. Experience the convenience of online education with
-                                    personalized support from expert instructors.
-                                </p>
-                                <div class="buttons">
-                                    <div class="main-button">
-                                        <a href="#contact">Register & Get Started</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <button class="show-video">
-                                            <i class="fa fa-play"></i> Discover More
-                                        </button>
-
-
-                                        <div class="video-container" style="display: none;">
-                                            <button id="" class="btn close-btn close-video"
-                                                style="position: absolute; top: 10px; right: 20px;">X</button>
-
-
-                                            <div class="embed-responsive">
-                                                <iframe id="video-frame"
-                                                    src="https://www.youtube.com/embed/NlM5SuiHR0A?rel=0"
-                                                    frameborder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
+                                                <div class="embed-responsive">
+                                                    <iframe id="video-frame-{{ $loop->index }}"
+                                                        data-src="{{ $banner->youtube_video_url }}?rel=0"
+                                                        src="{{ $banner->youtube_video_url }}?rel=0"
+                                                        title="Skill UP Youtube" frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                                    </iframe>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
+
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div class="item item-3" style="background-image: url(../images/banner-item-01.jpg);">
-                            <div class="header-text">
-                                <button class="category" >Flexible Learning</button>
-                                <h2>Learn at Your Own Pace from Anywhere</h2>
-                                <p>
-                                    Our online classes are held three times a week at 8 PM EDT, making it easy to fit
-                                    learning into your schedule. Experience the convenience of online education with
-                                    personalized support from expert instructors.
-                                </p>
-                                <div class="buttons">
-                                    <div class="main-button">
-                                        <a href="#contact">Register & Get Started</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <button class="show-video">
-                                            <i class="fa fa-play"></i> Discover More
-                                        </button>
+                        @endforeach
 
 
-                                        <div class="video-container" style="display: none;">
-                                            <button id="" class="btn close-btn close-video"
-                                                style="position: absolute; top: 10px; right: 20px;">X</button>
-
-
-                                            <div class="embed-responsive">
-                                                <iframe id="video-frame"
-                                                    src="https://www.youtube.com/embed/NlM5SuiHR0A?rel=0"
-                                                    frameborder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -272,7 +234,7 @@
 
     {{-- about us starts --}}
 
-    <div class="section about-us">
+    <div class="section about-us" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-1">
@@ -426,16 +388,20 @@
                                 </span>
 
                             </div>
-                            <div class="down-content">
-                                @php
+                            <a href="courses/{{ $course->slug }}">
 
-                                    $dateString = $course->start_date; // Assuming this is a Carbon/Date object or a date string
-                                    $formattedDate = Carbon::parse($dateString)->format('F j'); // Format to "Month Name Day"
-                                @endphp
+                                <div class="down-content">
+                                    @php
 
-                                <span class="author">Date: {{ $formattedDate }}</span>
-                                <h4>{{ $course->title }}</h4>
-                            </div>
+                                        $dateString = $course->start_date; // Assuming this is a Carbon/Date object or a date string
+                                        $formattedDate = Carbon::parse($dateString)->format('F j'); // Format to "Month Name Day"
+                                    @endphp
+
+                                    <span class="author">Date: {{ $formattedDate }}</span>
+                                    <h4>{{ $course->title }}</h4>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 @endforeach
@@ -480,7 +446,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -493,88 +458,36 @@
     <div class="team section" id="team">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-member">
-                        <div class="main-content">
-                            <img src="images/member-01.jpg" alt="" />
-                            <span class="category">Instructor</span>
-                            <h4>Samuel Kedir</h4>
-                            <ul class="social-icons">
-                                <li>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                                </li>
-                            </ul>
+                @foreach ($teams as $team)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-member">
+                            <div class="main-content">
+                                <img src="images/member-01.jpg" alt="" />
+                                <span class="category">{{ $team->category }}</span>
+                                <h4>{{ $team->name }}</h4>
+                                <ul class="social-icons">
+                                    <li>
+                                        <a href="{{ $team->instagram }}"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $team->gmail }}"><i class="fab fa-google"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $team->linkedin }}"><i class="fab fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {{-- <div class="col-lg-3 col-md-6">
-            <div class="team-member">
-              <div class="main-content">
-                <img src="images/member-02.jpg" alt="" />
-                <span class="category">Graphic Teacher</span>
-                <h4>Cindy Walker</h4>
-                <ul class="social-icons">
-                  <li>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div> --}}
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-member">
-                        <div class="main-content">
-                            <img src="images/member-03.jpg" alt="" />
-                            <span class="category">Data Analytics Instructor</span>
-                            <h4>Nobel Mitiku</h4>
-                            <ul class="social-icons">
-                                <li>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-member">
-                        <div class="main-content">
-                            <img src="images/member-04.jpg" alt="" />
-                            <span class="category">Development Instructor</span>
-                            <h4>Yonatan Abera</h4>
-                            <ul class="social-icons">
-                                <li>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
+
+
+
+
             </div>
         </div>
+
     </div>
 
     {{-- Testimonial Begins --}}
@@ -583,6 +496,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="owl-carousel owl-testimonials">
+
                         @foreach ($testimonials as $testimonial)
                             <div class="item">
                                 <p>{{ $testimonial->testimonial }}</p>
@@ -665,16 +579,17 @@
                 <div class="col-lg-6 align-self-center">
                     <div class="section-heading">
                         <h6>Contact Us</h6>
-                        <h2>Feel free to contact us anytime</h2>
+                        <h2>Feel free to reach out anytime</h2>
                         <p>
-                            Thank you for choosing our templates. We provide you best CSS
-                            templates at absolutely 100% free of charge. You may support us
-                            by sharing our website to your friends.
+                            We're here to support your journey into tech. If you have questions or need more info about
+                            our courses, don’t hesitate to contact us. Let's help you succeed!
                         </p>
+
+
                         <div class="special-offer">
                             <span class="offer">off<br /><em>50%</em></span>
-                            <h6>Valide: <em>24 April 2036</em></h6>
-                            <h4>Special Offer <em>50%</em> OFF!</h4>
+                            <h6>Valid: <em>15 October 2024</em></h6>
+                            <h4>Special Offer <em>50% OFF! </em></h4>
                             <a href="#"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -739,5 +654,7 @@
 
 
 
+
+</html>
 
 </html>

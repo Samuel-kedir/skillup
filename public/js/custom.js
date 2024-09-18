@@ -80,6 +80,65 @@
         },
     });
 
+    $('.owl-testimonials').owlCarousel({
+        center: true,
+        items: 1,
+        loop: true,
+        nav: true,
+        navText: [
+            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+            '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+        ],
+        margin: 30,
+        responsive: {
+            992: {
+                items: 1,
+            },
+            1200: {
+                items: 1,
+            },
+        },
+    });
+
+    // Menu Dropdown Toggle
+    if ($('.menu-trigger').length) {
+        $('.menu-trigger').on('click', function () {
+            $(this).toggleClass('active');
+            $('.header-area .nav').slideToggle(200);
+        });
+    }
+
+    // Menu elevator animation
+    $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on(
+        'click',
+        function () {
+            if (
+                location.pathname.replace(/^\//, '') ==
+                    this.pathname.replace(/^\//, '') &&
+                location.hostname == this.hostname
+            ) {
+                var target = $(this.hash);
+                target = target.length
+                    ? target
+                    : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    var width = $(window).width();
+                    if (width < 767) {
+                        $('.menu-trigger').removeClass('active');
+                        $('.header-area .nav').slideUp(200);
+                    }
+                    $('html,body').animate(
+                        {
+                            scrollTop: target.offset().top - 80,
+                        },
+                        700,
+                    );
+                    return false;
+                }
+            }
+        },
+    );
+
     // Other carousel or JS functionalities ...
 
     function initializeVideoEventHandlers() {}
@@ -150,29 +209,55 @@
     }
 })(window.jQuery);
 
-$(document).on('click', '.show-video', function () {
-    var videoContainer = $('.video-container');
-    var closeVideoButton = $('.close-video');
+// $(document).on('click', '.show-video', function () {
+//     var videoContainer = $('.video-container');
+//     var closeVideoButton = $('.close-video');
 
-    // Check if video container and close button exist
-    if ($(this) && videoContainer && closeVideoButton) {
-        console.log('Video button clicked');
+//     // Check if video container and close button exist
+//     if ($(this) && videoContainer && closeVideoButton) {
+//         console.log('Video button clicked');
 
-        if (
-            videoContainer.css('display') === 'none' ||
-            videoContainer.css('display') === ''
-        ) {
-            videoContainer.css('display', 'flex');
-        } else {
-            videoContainer.css('display', 'none');
-        }
+//         if (
+//             videoContainer.css('display') === 'none' ||
+//             videoContainer.css('display') === ''
+//         ) {
+//             videoContainer.css('display', 'flex');
+//         } else {
+//             videoContainer.css('display', 'none');
+//         }
 
-        // Close video when the close button is clicked
-        closeVideoButton.on('click', function () {
-            videoContainer.css('display', 'none'); // Hide the video container
-            $('#show-video').css('display', 'inline-block'); // Show the play button again
+//         // Close video when the close button is clicked
+//         closeVideoButton.on('click', function () {
+//             videoContainer.css('display', 'none'); // Hide the video container
+//             $('#show-video').css('display', 'inline-block'); // Show the play button again
+//         });
+//     } else {
+//         console.error('Required elements for video functionality not found.');
+//     }
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Show video when play button is clicked
+    document.querySelectorAll('.show-video').forEach(function (playButton) {
+        playButton.addEventListener('click', function () {
+            let videoContainer = playButton.nextElementSibling;
+            let iframe = videoContainer.querySelector('iframe');
+
+            // Restore the original src to play the video
+            iframe.src = iframe.dataset.src;
+            videoContainer.style.display = 'block';
         });
-    } else {
-        console.error('Required elements for video functionality not found.');
-    }
+    });
+
+    // Close video and stop playback when close button is clicked
+    document.querySelectorAll('.close-video').forEach(function (closeButton) {
+        closeButton.addEventListener('click', function () {
+            let videoContainer = closeButton.parentElement;
+            let iframe = videoContainer.querySelector('iframe');
+
+            // Reset src to stop video playback
+            iframe.src = '';
+            videoContainer.style.display = 'none';
+        });
+    });
 });

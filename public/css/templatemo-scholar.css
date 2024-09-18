@@ -400,7 +400,6 @@ Header Style
 
 .header-area .main-nav .logo h1 {
     font-size: 36px;
-    text-transform: uppercase;
     color: #fff;
     font-weight: 600;
     margin-right: 20px;
@@ -1991,27 +1990,6 @@ body {
     color: var(--light);
 }
 
-.video-container {
-    position: relative;
-    max-width: 100%;
-    margin-top: 20px;
-}
-
-.embed-responsive {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    background: #000;
-}
-
-.embed-responsive iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 /* .video-container {
     position: relative;
@@ -2037,8 +2015,39 @@ body {
 } */
 
 /* Ensure the video container covers the whole screen */
-#show-video:hover {
+.video-container {
+    position: relative;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.embed-responsive {
+    position: relative;
+    /* padding-bottom: 56.25%; */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.show-video {
+    color: whitesmoke;
+    transition: transfrom 2s ease;
+}
+
+.show-video:hover {
     cursor: pointer;
+    transform: scale(1.2);
+    color: #c1b8f2;
+    transition: transfrom 2s ease;
 }
 /* Video container now has a close button and centers the iframe */
 .video-container {
@@ -2051,18 +2060,18 @@ body {
     display: none; /* Initially hidden */
     justify-content: center; /* Centers iframe horizontally */
     align-items: center; /* Centers iframe vertically */
-    z-index: 1000; /* Ensure it's on top of other content */
+    z-index: 2; /* Ensure it's on top of other content */
 }
 
 /* Controls the size of the iframe */
 .embed-responsive {
-    width: 80%; /* 80% of the screen width */
-    height: 80%; /* 60% of the screen height */
+    width: 100%; /* 80% of the screen width */
+    height: 100%; /* 60% of the screen height */
 }
 
 iframe {
-    width: 80%;
-    height: 800%;
+    width: 100%;
+    height: 100%;
 }
 
 /* Styling for the close button */

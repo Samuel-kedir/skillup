@@ -73,7 +73,7 @@ Contact Style
     width: 65%;
     height: 100%;
     background-color: #f1f0fe;
-    content: "";
+    content: '';
     border-top-right-radius: 500px;
     border-bottom-right-radius: 500px;
 }
@@ -175,7 +175,7 @@ Contact Style
     top: 0;
     width: 318px;
     height: 119px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -186,7 +186,7 @@ Contact Style
     bottom: 0;
     width: 183px;
     height: 149px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -273,7 +273,7 @@ Contact Style
 
 .contact-us-content .more-info h4 a {
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
 }
 
@@ -319,7 +319,7 @@ footer::before {
     bottom: 0;
     width: 318px;
     height: 119px;
-    content: "";
+    content: '';
     z-index: 2;
 }
 
@@ -560,7 +560,7 @@ body {
 }
 
 .main-text {
-    color: #7a6ad8;
+    color: white;
 }
 
 .bg-main,
@@ -576,4 +576,36 @@ body {
     #nav-contact {
         margin-right: 20px;
     }
+    #navbarCollapse {
+        padding-right: 40px;
+    }
+}
+
+.navbar {
+    background-color: #7a6ad8 !important;
+    color: white;
+}
+
+nav .nav-link {
+    color: white !important;
+    font-size: 14px !important;
+}
+
+.dropdown .dropdown-menu {
+    background-color: #7a6ad8 !important;
+    color: white !important;
+}
+
+.dropdown .dropdown-menu a:hover {
+    color: whitesmoke !important;
+    background-color: #6356b2;
+}
+
+.dropdown .dropdown-menu a {
+    color: white;
+}
+
+.breadcrumb ol .breadcrumb-item a {
+    color: #7a6ad8;
+    font-size: 14px;
 }
