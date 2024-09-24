@@ -21,8 +21,7 @@ class HomeController extends Controller
         $courses = CourseSyllabus::with('category')->get();
         $banners = Banner::all();
 
-
         // dd($courses);
-        return view('welcome', compact('events','testimonials','testimonialSection','courses','banners','teams'));
+        return view('welcome', compact('events', 'testimonials', 'testimonialSection', 'courses', 'banners', 'teams'));
     }
 }

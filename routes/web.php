@@ -15,7 +15,6 @@ Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('course.s
 
 Route::get('/', [HomeController::class, 'index']);
 
-
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/courses/{course}', [CourseController::class, 'show'])->name('course.detail');
 // Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');

@@ -137,7 +137,8 @@
                                                 <i class="fa fa-play"></i> {{ $banner->video_button_text }}
                                             </span>
                                             <div class="video-container" style="display: none;">
-                                                <button class="btn close-btn close-video" style="position: absolute; top: 10px; right: 20px;">X</button>
+                                                <button class="btn close-btn close-video"
+                                                    style="position: absolute; top: 10px; right: 20px;">X</button>
 
                                                 <div class="embed-responsive">
                                                     <iframe id="video-frame-{{ $loop->index }}"
@@ -145,7 +146,8 @@
                                                         src="{{ $banner->youtube_video_url }}?rel=0"
                                                         title="Skill UP Youtube" frameborder="0"
                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                                        referrerpolicy="strict-origin-when-cross-origin"
+                                                        allowfullscreen>
                                                     </iframe>
                                                 </div>
                                             </div>
@@ -458,11 +460,19 @@
     <div class="team section" id="team">
         <div class="container">
             <div class="row">
+                <div class="text-center col-lg-12">
+                    <div class="section-heading">
+                        <h6>Instructor Led</h6>
+                        <h2>Latest Courses</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 @foreach ($teams as $team)
                     <div class="col-lg-4 col-md-6">
                         <div class="team-member">
                             <div class="main-content">
-                                <img src="images/member-01.jpg" alt="" />
+                                <img src="{{ asset('storage/' . $team->image) }}" alt="" />
                                 <span class="category">{{ $team->category }}</span>
                                 <h4>{{ $team->name }}</h4>
                                 <ul class="social-icons">
