@@ -456,17 +456,17 @@
 
 
     {{-- facts ends --}}
-
-    <div class="team section" id="team">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <div class="section-heading">
-                        <h6>Instructor Led</h6>
-                        <h2>Latest Courses</h2>
-                    </div>
+    <div class="container team-title" >
+        <div class="row">
+            <div class="text-center col-lg-12">
+                <div class="section-heading">
+                    <h6>Highly Effective</h6>
+                    <h2>Our Instructors</h2>
                 </div>
             </div>
+        </div>
+        <div class="team section" id="team">
+
             <div class="row">
                 @foreach ($teams as $team)
                     <div class="col-lg-4 col-md-6">
