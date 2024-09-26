@@ -49,6 +49,20 @@
 </head>
 
 <body>
+
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #333;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            font-weight: 400;
+        }
+    </style>
     <div class="p-0 bg-white ">
 
         <!-- Navbar Start -->
@@ -89,7 +103,7 @@
     <!-- Navbar End -->
 
     <!-- Header End -->
-    <div class="py-5 mb-5 container-xxl bg-dark page-header"
+    <div class="py-5 mb-5 bg-dark page-header"
         style="
       background: linear-gradient(rgba(43, 57, 64, 0.8), rgba(43, 57, 64, 0.7)),
       url('{{ asset('storage/' . $courseSyllabus->course_hero_image) }}') center center no-repeat;
@@ -124,7 +138,7 @@
                     <div class="mb-5 d-flex align-items-center">
                         <img class="flex-shrink-0 border rounded img-fluid d-none d-md-block"
                             src="{{ asset('storage/' . $courseSyllabus->course_icon) }}"
-                            alt="{{ $courseSyllabus->title }}" style="width: 80px; height: 80px" />
+                            alt="{{ $courseSyllabus->title }}" style="width: 80px; height: 80px; object-fit: cover;" />
                         <div class="text-start ps-4">
                             <h3 class="mb-3">{{ $courseSyllabus->title }}</h3>
                             <span class="text-truncate me-3"><i class="fa fa-calendar-alt course-icon me-2"></i>Start
