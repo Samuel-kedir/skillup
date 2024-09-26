@@ -1304,7 +1304,6 @@ Team Style
     .team-title {
         margin-top: 50px; /* Minimize margin for extra small screens */
     }
-
 }
 
 /*
@@ -1363,6 +1362,8 @@ Testimonials Style
     max-width: 100px;
     float: left;
     margin-right: 25px;
+    max-height: 100px;
+    object-fit: cover;
 }
 
 .testimonials .item span {
