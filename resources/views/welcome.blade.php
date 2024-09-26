@@ -547,7 +547,7 @@
                         <div class="item">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <div class="image" style="max-height: 100px">
+                                    <div class="image" >
                                         <img style="height: 200px; max-height: 200px ; object-fit: cover; "
                                             src="{{ $event->image_path }}" alt="{{ $event->title }}" />
                                     </div>
