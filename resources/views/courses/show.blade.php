@@ -91,7 +91,7 @@
     <!-- Header End -->
     <div class="py-5 mb-5 container-xxl bg-dark page-header"
         style="
-      background: linear-gradient(rgba(43, 57, 64, 0.5), rgba(43, 57, 64, 0.7)),
+      background: linear-gradient(rgba(43, 57, 64, 0.8), rgba(43, 57, 64, 0.7)),
       url('{{ asset('storage/' . $courseSyllabus->course_hero_image) }}') center center no-repeat;
       background-size: cover;">
         <div class="container pt-5 pb-4 my-5">
@@ -100,11 +100,13 @@
             </h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb ">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Courses</a></li>
-                    <li class="text-white breadcrumb-item active" aria-current="page">
+                    <li class=" breadcrumb-item active" aria-current="page">
+                        {{ $courseSyllabus->category->name }}
+                    </li>
+                    <li class=" breadcrumb-item active" aria-current="page">
                         {{ $courseSyllabus->title }}
                     </li>
+
                 </ol>
             </nav>
         </div>

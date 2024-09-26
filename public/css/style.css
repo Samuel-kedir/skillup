@@ -605,7 +605,7 @@ nav .nav-link {
     color: white;
 }
 
-.breadcrumb ol .breadcrumb-item a {
-    color: #7a6ad8;
+nav ol .breadcrumb-item.active {
+    color: whitesmoke;
     font-size: 14px;
 }
