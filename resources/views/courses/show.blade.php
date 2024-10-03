@@ -172,10 +172,9 @@
                     </div>
 
                     <div class="rounded bg-light p-lg-5">
-                        <h4 class="mb-4">Instructor Detail</h4>
-                        <p class="m-0">John Doe is a seasoned data analyst with over 10 years of experience in the
-                            industry. He has been teaching Power BI and data visualization techniques to professionals
-                            across various industries.</p>
+                        <h4 class="mb-4">{{$courseSyllabus->about_course_title}}</h4>
+                        <p class="m-0">{!!
+                            $courseSyllabus->about_course_detail!!}</p>
                     </div>
                 </div>
             </div>
